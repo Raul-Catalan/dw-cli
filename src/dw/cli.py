@@ -1,9 +1,12 @@
 import typer
 
-from .deepwork import deep
+import database
+import deepwork
 
 app = typer.Typer()
-app.command()(deep)
+# TODO: Clean up and order commands
+app.add_typer(database.app, name="database")
+app.add_typer(deepwork.app, name="deepwork")
 
 if __name__ == "__main__":
     app()
